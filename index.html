@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jean-Baptiste Allarassem - Professional Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="name">Jean-Baptiste Allarassem</h1>
+        <h2 class="title">PROFESSIONAL DEVELOPMENT AND CERTIFICATIONS</h2>
+      </header>
+
+      <main class="certificates-grid">
+        <div class="certificate-card" onclick="showCertificate('icdl .pdf')">
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>ICDL Certificate</h3>
+          <p>Click to view certificate</p>
+        </div>
+
+        <div
+          class="certificate-card"
+          onclick="showCertificate('humanitarian.pdf')"
+        >
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Humanitarian Certificate</h3>
+          <p>Click to view certificate</p>
+        </div>
+
+        <div class="certificate-card" onclick="showCertificate('INSSA.pdf')">
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>INSSA Certificate</h3>
+          <p>Click to view certificate</p>
+        </div>
+
+        <div class="certificate-card" onclick="showCertificate('german.pdf')">
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>German Cooperation Certificate</h3>
+          <p>Click to view certificate</p>
+        </div>
+
+        <div
+          class="certificate-card"
+          onclick="showCertificate('Participation.pdf')"
+        >
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Certificate of Participation</h3>
+          <p>Click to view certificate</p>
+        </div>
+      </main>
+
+      <div id="pdf-viewer" class="pdf-viewer">
+        <div class="pdf-container">
+          <button class="close-btn" onclick="closeViewer()">
+            <i class="fas fa-times"></i>
+          </button>
+          <iframe id="pdf-frame" src="" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showCertificate(pdfFile) {
+        const viewer = document.getElementById("pdf-viewer");
+        const frame = document.getElementById("pdf-frame");
+        frame.src = pdfFile + "#toolbar=0&navpanes=0";
+        viewer.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeViewer() {
+        const viewer = document.getElementById("pdf-viewer");
+        const frame = document.getElementById("pdf-frame");
+        viewer.classList.remove("active");
+        frame.src = "";
+        document.body.style.overflow = "auto";
+      }
+
+      // Close viewer when clicking outside the PDF container
+      document
+        .getElementById("pdf-viewer")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeViewer();
+          }
+        });
+    </script>
+  </body>
+</html>
